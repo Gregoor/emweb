@@ -1,17 +1,20 @@
 {
   "scripts": {
     "prepare": "husky install",
+    "types": "tsc",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "license": "ISC",
   "devDependencies": {
     "@commitlint/config-conventional": "^17.7.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "commitlint": "^17.7.1",
     "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "lint-staged": {

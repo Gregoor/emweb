@@ -14,7 +14,7 @@ function useEmbedData({ url, maxHeight, maxWidth }: Props) {
   useEffect(() => {
     const ctrl = new AbortController();
     fetchOFrame(url, { maxHeight, maxWidth, signal: ctrl.signal }).then(
-      setData
+      setData,
     );
     return () => {
       ctrl.abort();
@@ -31,7 +31,7 @@ export function Embed(props: Props) {
   const [size, setSize] = useState<[number, number] | null>(null);
   useEffect(
     () => onWindowMessage(url, { onResize: (...size) => setSize(size) }),
-    [url]
+    [url],
   );
 
   if (typeof data == "string") {

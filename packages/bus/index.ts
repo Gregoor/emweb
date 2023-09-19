@@ -7,7 +7,7 @@ function postResizeMessage(el: HTMLElement) {
       width: el.offsetWidth,
       height: el.offsetHeight,
     } satisfies ResizeMessage,
-    "*"
+    "*",
   );
 }
 

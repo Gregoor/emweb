@@ -22,7 +22,7 @@ export async function fetchOFrame(url: string, options?: Options) {
     return extractOEmbed(
       url,
       { maxheight: maxHeight, maxwidth: maxWidth },
-      { signal }
+      { signal },
     );
   }
 
@@ -32,12 +32,12 @@ export async function fetchOFrame(url: string, options?: Options) {
     `${phost}/.well-known/oembed.json`,
     {
       signal,
-    }
+    },
   ).then((r) => r.json());
   const endpoint = manifest.endpoints.find(({ schemes }) =>
     (schemes ?? []).some((scheme) =>
-      isWildcardURLMatch(new URL(scheme, phost).toString(), url)
-    )
+      isWildcardURLMatch(new URL(scheme, phost).toString(), url),
+    ),
   );
   if (!endpoint) {
     return null;
@@ -50,7 +50,7 @@ export async function fetchOFrame(url: string, options?: Options) {
 
 export function onWindowMessage(
   url: string,
-  callbacks: { onResize: (width: number, height: number) => void }
+  callbacks: { onResize: (width: number, height: number) => void },
 ) {
   const handleMessage = (event: MessageEvent<OFrameMessage>): void => {
     if (event.origin !== new URL(url).origin) {
