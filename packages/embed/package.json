@@ -1,0 +1,10 @@
+{
+  "name": "@oframe/embed",
+  "version": "0.1.0",
+  "license": "ISC",
+  "dependencies": {
+    "@extractus/oembed-extractor": "^4.0.1",
+    "@oframe/types": "workspace:*",
+    "escape-string-regexp": "^5.0.0"
+  }
+}

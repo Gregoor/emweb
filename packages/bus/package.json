@@ -1,0 +1,8 @@
+{
+  "name": "@oframe/bus",
+  "version": "0.1.0",
+  "license": "ISC",
+  "dependencies": {
+    "@oframe/types": "workspace:*"
+  }
+}
