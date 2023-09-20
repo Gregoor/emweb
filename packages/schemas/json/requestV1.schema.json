@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "maxwidth": {
+      "type": "number"
+    },
+    "maxheight": {
+      "type": "number"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["json", "xml"]
+    }
+  },
+  "required": ["url"],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

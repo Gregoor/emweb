@@ -5,7 +5,7 @@ import {
 } from "@extractus/oembed-extractor";
 import escapeStringRegexp from "escape-string-regexp";
 
-import type { OFrameMessage } from "@oframe/types";
+import type { OEmbedMessage } from "@oembed/types";
 
 const isWildcardURLMatch = (patternURL: string, url: string) =>
   new RegExp(escapeStringRegexp(patternURL).replaceAll("\\*", ".*")).test(url);
@@ -16,7 +16,7 @@ type Options = {
   signal?: AbortSignal;
 };
 
-export async function fetchOFrame(url: string, options?: Options) {
+export async function fetchoembed(url: string, options?: Options) {
   const { signal, maxHeight, maxWidth } = options ?? {};
   if (hasOEmbedProvider(url)) {
     return extractOEmbed(
@@ -52,15 +52,15 @@ export function onWindowMessage(
   url: string,
   callbacks: { onResize: (width: number, height: number) => void },
 ) {
-  const handleMessage = (event: MessageEvent<OFrameMessage>): void => {
+  const handleMessage = (event: MessageEvent<OEmbedMessage>): void => {
     if (event.origin !== new URL(url).origin) {
       return;
     }
     const { data } = event;
-    if (!data.type.startsWith("oframe:")) {
+    if (!data.type.startsWith("oembed:")) {
       return;
     }
-    switch (data.type.substring("oframe:".length)) {
+    switch (data.type.substring("oembed:".length)) {
       case "resize":
         callbacks.onResize?.(data.width, data.height);
         break;

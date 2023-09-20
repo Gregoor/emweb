@@ -1,9 +1,9 @@
-import type { ResizeMessage } from "@oframe/types";
+import type { ResizeMessage } from "@oembed/types";
 
 function postResizeMessage(el: HTMLElement) {
   window.parent?.postMessage(
     {
-      type: "oframe:resize",
+      type: "oembed:resize",
       width: el.offsetWidth,
       height: el.offsetHeight,
     } satisfies ResizeMessage,

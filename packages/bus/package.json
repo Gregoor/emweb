@@ -1,8 +1,13 @@
 {
-  "name": "@oframe/bus",
+  "name": "@oembed/bus",
   "version": "0.1.0",
   "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist"
+  },
   "dependencies": {
-    "@oframe/types": "workspace:*"
+    "@oembed/types": "workspace:*"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "name": "@oembed/schemas",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "to-json-schema": "ts-node-esm to-json-schema.ts",
+    "build": "tsc --outDir dist"
+  },
+  "dependencies": {
+    "zod": "^3.22.2",
+    "zod-to-json-schema": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.2"
+  }
+}

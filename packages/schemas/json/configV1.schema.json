@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "provider_name": {
+      "type": "string"
+    },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "schemes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "example_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "discovery": {
+            "type": "boolean"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": ["schemes", "url"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["provider_name", "endpoints"],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

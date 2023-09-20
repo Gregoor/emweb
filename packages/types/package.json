@@ -1,6 +1,10 @@
 {
-  "name": "@oframe/types",
+  "name": "@oembed/types",
   "version": "0.1.0",
-  "scripts": {},
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist"
+  },
   "license": "ISC"
 }

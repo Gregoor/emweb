@@ -1,5 +1,5 @@
 type GenericMessage<Type extends string, Fields extends object> = {
-  type: `oframe:${Type}`;
+  type: `oembed:${Type}`;
 } & Fields;
 
 export type ResizeMessage = GenericMessage<
@@ -7,4 +7,4 @@ export type ResizeMessage = GenericMessage<
   { width: number; height: number }
 >;
 
-export type OFrameMessage = ResizeMessage;
+export type OEmbedMessage = ResizeMessage;

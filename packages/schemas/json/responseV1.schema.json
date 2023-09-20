@@ -1,0 +1,152 @@
+{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author_name": {
+          "type": "string"
+        },
+        "author_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "cache_age": {
+          "type": "string"
+        },
+        "thumbnail_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "thumbnail_width": {
+          "type": "number"
+        },
+        "thumbnail_height": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string",
+          "const": "photo"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      },
+      "required": ["version", "type", "url", "width", "height"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/anyOf/0/properties/version"
+        },
+        "title": {
+          "$ref": "#/anyOf/0/properties/title"
+        },
+        "author_name": {
+          "$ref": "#/anyOf/0/properties/author_name"
+        },
+        "author_url": {
+          "$ref": "#/anyOf/0/properties/author_url"
+        },
+        "cache_age": {
+          "$ref": "#/anyOf/0/properties/cache_age"
+        },
+        "thumbnail_url": {
+          "$ref": "#/anyOf/0/properties/thumbnail_url"
+        },
+        "thumbnail_width": {
+          "$ref": "#/anyOf/0/properties/thumbnail_width"
+        },
+        "thumbnail_height": {
+          "$ref": "#/anyOf/0/properties/thumbnail_height"
+        },
+        "type": {
+          "type": "string",
+          "const": "video"
+        },
+        "html": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      },
+      "required": ["version", "type", "html", "width", "height"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/anyOf/0/properties/version"
+        },
+        "title": {
+          "$ref": "#/anyOf/0/properties/title"
+        },
+        "author_name": {
+          "$ref": "#/anyOf/0/properties/author_name"
+        },
+        "author_url": {
+          "$ref": "#/anyOf/0/properties/author_url"
+        },
+        "cache_age": {
+          "$ref": "#/anyOf/0/properties/cache_age"
+        },
+        "thumbnail_url": {
+          "$ref": "#/anyOf/0/properties/thumbnail_url"
+        },
+        "thumbnail_width": {
+          "$ref": "#/anyOf/0/properties/thumbnail_width"
+        },
+        "thumbnail_height": {
+          "$ref": "#/anyOf/0/properties/thumbnail_height"
+        },
+        "type": {
+          "type": "string",
+          "const": "link"
+        }
+      },
+      "required": ["version", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "rich"
+        },
+        "html": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      },
+      "required": ["type", "html", "width", "height"],
+      "additionalProperties": false
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

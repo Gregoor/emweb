@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { fetchOFrame, onWindowMessage } from "@oframe/embed";
+import { fetchoembed, onWindowMessage } from "@oembed/embed";
 
 type Props = {
   url: string;
@@ -10,10 +10,10 @@ type Props = {
 
 function useEmbedData({ url, maxHeight, maxWidth }: Props) {
   const [data, setData] =
-    useState<Awaited<ReturnType<typeof fetchOFrame>>>(null);
+    useState<Awaited<ReturnType<typeof fetchoembed>>>(null);
   useEffect(() => {
     const ctrl = new AbortController();
-    fetchOFrame(url, { maxHeight, maxWidth, signal: ctrl.signal }).then(
+    fetchoembed(url, { maxHeight, maxWidth, signal: ctrl.signal }).then(
       setData,
     );
     return () => {
