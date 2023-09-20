@@ -1,8 +1,9 @@
 {
   "name": "@emweb/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "ISC",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "tsc --outDir dist"

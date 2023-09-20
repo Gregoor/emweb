@@ -1,8 +1,9 @@
 {
   "name": "@emweb/schemas",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "to-json-schema": "ts-node-esm --transpileOnly to-json-schema.ts",
