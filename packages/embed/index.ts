@@ -42,7 +42,7 @@ export async function fetchOEmbed(url: string, options?: Options) {
     return null;
   }
   if (!source.endpoint) {
-    return url;
+    return { type: "iframe" };
   }
   return null;
 }

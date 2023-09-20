@@ -23,26 +23,26 @@ function useEmbedData({ url, maxHeight, maxWidth }: Props) {
   return data;
 }
 
-export function Embed(props: Props) {
+function InnerEmbed(props: Props) {
   const { url } = props;
   const data = useEmbedData(props);
   const iFrameRef = useRef<HTMLIFrameElement>(null);
 
-  const [size, setSize] = useState<[number, number] | null>(null);
+  const [height, setHeight] = useState<number>(0);
   useEffect(
-    () => onWindowMessage(url, { onResize: (...size) => setSize(size) }),
+    () => onWindowMessage(url, { onResize: (_, height) => setHeight(height) }),
     [url],
   );
 
-  if (typeof data == "string") {
+  if (data?.type == "iframe") {
     return (
       <iframe
         ref={iFrameRef}
-        src={data}
+        src={url}
         style={{
           border: 0,
-          width: size?.[0],
-          height: size?.[1],
+          width: "100%",
+          height,
           maxWidth: props.maxWidth,
           maxHeight: props.maxHeight,
         }}
@@ -58,5 +58,59 @@ export function Embed(props: Props) {
       dangerouslySetInnerHTML={{ __html: data.html }}
       style={{ display: "flex" }}
     />
+  );
+}
+
+export function Embed({
+  inputProps,
+  ...props
+}: { inputProps?: React.ComponentProps<"input"> } & Props) {
+  return (
+    <div
+      style={{
+        border: "1px solid rgb(107, 114, 128)",
+        borderRadius: 4,
+      }}
+    >
+      {inputProps ? (
+        <input
+          placeholder="https://example.com/embeddable/resource"
+          type="text"
+          style={{
+            border: "none",
+            borderBottom: "1px solid rgb(107, 114, 128)",
+            outline: "none",
+            padding: 10,
+            width: "100%",
+            boxSizing: "border-box",
+            textAlign: "center",
+            background: "none",
+          }}
+          {...inputProps}
+        />
+      ) : (
+        <a
+          style={{
+            borderBottom: "1px solid rgb(107, 114, 128)",
+            padding: 10,
+            display: "flex",
+            justifyContent: "center",
+          }}
+          href={props.url}
+          target="_blank"
+        >
+          <span
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {props.url}
+          </span>
+        </a>
+      )}
+      <InnerEmbed {...props} />
+    </div>
   );
 }

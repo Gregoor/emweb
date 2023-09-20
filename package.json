@@ -4,7 +4,8 @@
   "scripts": {
     "prepare": "husky install",
     "types": "tsc --noEmit",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "watch": "pnpm --parallel --filter @oembed/* prepublish --watch"
   },
   "license": "ISC",
   "devDependencies": {
