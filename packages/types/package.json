@@ -6,6 +6,10 @@
   "scripts": {
     "prepublish": "tsc --outDir dist"
   },
+  "dependencies": {
+    "@oembed/schemas": "workspace:*",
+    "zod": "^3.22.2"
+  },
   "license": "ISC",
   "files": [
     "dist/"

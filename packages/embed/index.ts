@@ -1,11 +1,10 @@
 import {
   extract as extractOEmbed,
   hasProvider as hasOEmbedProvider,
-  Provider as OEmbedProvider,
 } from "@extractus/oembed-extractor";
 import escapeStringRegexp from "escape-string-regexp";
 
-import type { OEmbedMessage } from "@oembed/types";
+import type { ConfigV2oframe, OEmbedMessage } from "@oembed/types";
 
 const isWildcardURLMatch = (patternURL: string, url: string) =>
   new RegExp(escapeStringRegexp(patternURL).replaceAll("\\*", ".*")).test(url);
@@ -16,7 +15,7 @@ type Options = {
   signal?: AbortSignal;
 };
 
-export async function fetchoembed(url: string, options?: Options) {
+export async function fetchOEmbed(url: string, options?: Options) {
   const { signal, maxHeight, maxWidth } = options ?? {};
   if (hasOEmbedProvider(url)) {
     return extractOEmbed(
@@ -28,21 +27,21 @@ export async function fetchoembed(url: string, options?: Options) {
 
   const u = new URL(url);
   const phost = `${u.protocol}//${u.host}`;
-  const manifest: OEmbedProvider = await fetch(
+  const manifest: ConfigV2oframe = await fetch(
     `${phost}/.well-known/oembed.json`,
     {
       signal,
     },
   ).then((r) => r.json());
-  const endpoint = manifest.endpoints.find(({ schemes }) =>
-    (schemes ?? []).some((scheme) =>
+  const source = manifest.sources?.find(({ match }) =>
+    (match ?? []).some((scheme) =>
       isWildcardURLMatch(new URL(scheme, phost).toString(), url),
     ),
   );
-  if (!endpoint) {
+  if (!source) {
     return null;
   }
-  if (!endpoint.url) {
+  if (!source.endpoint) {
     return url;
   }
   return null;

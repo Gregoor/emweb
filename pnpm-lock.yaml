@@ -106,7 +106,14 @@ importers:
         specifier: ^20.6.2
         version: 20.6.2
 
-  packages/types: {}
+  packages/types:
+    dependencies:
+      '@oembed/schemas':
+        specifier: workspace:*
+        version: link:../schemas
+      zod:
+        specifier: ^3.22.2
+        version: 3.22.2
 
 packages:
 
