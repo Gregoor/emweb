@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Path or absolute URL"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "from": {
+                "$ref": "#/properties/sources/items/anyOf/0"
+              },
+              "to": {
+                "$ref": "#/properties/sources/items/anyOf/0"
+              }
+            },
+            "required": ["from", "to"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name", "sources"],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

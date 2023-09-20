@@ -1,6 +1,66 @@
 import useLocalStorageState from "use-local-storage-state";
 
-import { Embed } from "./Embed";
+import { Embed } from "@emweb/react";
+
+export function LabeledEmbed({
+  url,
+  inputProps,
+}: {
+  url: string;
+  inputProps?: React.ComponentProps<"input">;
+}) {
+  return (
+    <div
+      style={{
+        border: "1px solid rgb(107, 114, 128)",
+        borderRadius: 4,
+      }}
+    >
+      {inputProps ? (
+        <input
+          placeholder="https://example.com/embeddable/resource"
+          type="text"
+          style={{
+            border: "none",
+            borderBottom: "1px solid rgb(107, 114, 128)",
+            outline: "none",
+            padding: 10,
+            width: "100%",
+            boxSizing: "border-box",
+            textAlign: "center",
+            background: "none",
+            color: "inherit",
+          }}
+          {...inputProps}
+        />
+      ) : (
+        <a
+          style={{
+            borderBottom: "1px solid rgb(107, 114, 128)",
+            padding: 10,
+            display: "flex",
+            justifyContent: "center",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+          href={url}
+          target="_blank"
+        >
+          <span
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {url}
+          </span>
+        </a>
+      )}
+      <Embed url={url} />
+    </div>
+  );
+}
 
 function App() {
   const [customURL, setCustomURL] = useLocalStorageState("customURL", {
@@ -8,13 +68,13 @@ function App() {
   });
   return (
     <div style={{ maxWidth: 600, margin: "0 auto" }}>
-      <h1>OEmbed</h1>
+      <h1>emweb</h1>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <Embed url="https://powl.vercel.app/id/39k80qwag97grwvk4se5h2799jgy8s0" />
-        <Embed url="https://soundcloud.com/frida-darko/frida-darko-saga-bucht-2023" />
+        <LabeledEmbed url="https://powl.vercel.app/id/39k80qwag97grwvk4se5h2799jgy8s0" />
+        <LabeledEmbed url="https://soundcloud.com/frida-darko/frida-darko-saga-bucht-2023" />
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <h2>Try your own</h2>
-          <Embed
+          <LabeledEmbed
             url={customURL}
             inputProps={{
               value: customURL,

@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 pnpm --filter schemas run to-json-schema
-git add packages/schemas/json/*.json
+git add *.schema.json
 
 npx lint-staged --allow-empty
 

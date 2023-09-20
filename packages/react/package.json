@@ -1,0 +1,24 @@
+{
+  "name": "@emweb/react",
+  "version": "0.1.0",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc --outDir dist"
+  },
+  "dependencies": {
+    "@emweb/host": "workspace:*",
+    "@emweb/oembed": "workspace:*",
+    "@extractus/oembed-extractor": "^4.0.1"
+  },
+  "peerDependencies": {
+    "react": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.22"
+  },
+  "files": [
+    "dist/"
+  ]
+}

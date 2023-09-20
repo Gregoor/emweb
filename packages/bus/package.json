@@ -1,6 +1,6 @@
 {
-  "name": "@oembed/bus",
-  "version": "0.1.1",
+  "name": "@emweb/bus",
+  "version": "0.1.0",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "prepublish": "tsc --outDir dist"
   },
   "dependencies": {
-    "@oembed/types": "workspace:*"
+    "@emweb/schemas": "workspace:*"
   },
   "files": [
     "dist/"

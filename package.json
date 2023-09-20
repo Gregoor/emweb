@@ -1,11 +1,11 @@
 {
-  "name": "oembed",
+  "name": "emweb",
   "private": true,
   "scripts": {
     "prepare": "husky install",
     "types": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "watch": "pnpm --parallel --filter @oembed/* prepublish --watch"
+    "watch": "pnpm --parallel --filter @emweb/* prepublish --watch"
   },
   "license": "ISC",
   "devDependencies": {
@@ -16,6 +16,7 @@
     "@typescript-eslint/parser": "^6.7.2",
     "commitlint": "^17.7.1",
     "eslint": "^8.49.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "multi-semantic-release": "^3.0.2",

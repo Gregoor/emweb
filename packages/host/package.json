@@ -1,5 +1,5 @@
 {
-  "name": "@oembed/embed",
+  "name": "@emweb/host",
   "version": "0.1.0",
   "license": "ISC",
   "main": "dist/index.js",
@@ -8,8 +8,7 @@
     "prepublish": "tsc --outDir dist"
   },
   "dependencies": {
-    "@extractus/oembed-extractor": "^4.0.1",
-    "@oembed/types": "workspace:*",
+    "@emweb/schemas": "workspace:*",
     "escape-string-regexp": "^5.0.0"
   },
   "files": [

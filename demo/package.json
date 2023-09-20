@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@oembed/embed": "workspace:*",
+    "@emweb/react": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "use-local-storage-state": "^19.1.0"
