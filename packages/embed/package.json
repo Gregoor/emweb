@@ -5,11 +5,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --outDir dist"
+    "prepublish": "tsc --outDir dist"
   },
   "dependencies": {
     "@extractus/oembed-extractor": "^4.0.1",
     "@oembed/types": "workspace:*",
     "escape-string-regexp": "^5.0.0"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }

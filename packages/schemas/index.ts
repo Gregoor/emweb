@@ -14,7 +14,7 @@ export const configV1 = z.object({
 });
 
 const stringOrURL = z.string().describe("Path or absolute URL");
-export const configV2 = z.object({
+export const configV2oframe = z.object({
   name: z.string(),
   sources: z.array(
     z.object({
@@ -38,7 +38,7 @@ export const requestV1 = z.object({
   format: z.enum(["json", "xml"]).optional(),
 });
 
-export const requestV2 = z.object({
+export const requestV2oframe = z.object({
   url: z.string(),
   max_width: z.number().optional(),
   max_height: z.number().optional(),

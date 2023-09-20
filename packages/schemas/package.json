@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "to-json-schema": "ts-node-esm to-json-schema.ts",
-    "build": "tsc --outDir dist"
+    "prepublish": "pnpm to-json-schema && tsc index.ts --declaration --outDir dist"
   },
   "dependencies": {
     "zod": "^3.22.2",
@@ -14,5 +14,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.6.2"
-  }
+  },
+  "files": [
+    "dist/",
+    "json/"
+  ]
 }

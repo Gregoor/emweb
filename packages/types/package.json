@@ -4,7 +4,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --outDir dist"
+    "prepublish": "tsc --outDir dist"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "files": [
+    "dist/"
+  ]
 }
