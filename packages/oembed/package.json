@@ -1,6 +1,6 @@
 {
   "name": "@emweb/oembed",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

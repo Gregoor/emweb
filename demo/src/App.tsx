@@ -1,6 +1,6 @@
 import useLocalStorageState from "use-local-storage-state";
 
-import { Embed } from "@emweb/react";
+import { Embed, useIsEmbeddable } from "@emweb/react";
 
 export function LabeledEmbed({
   url,
@@ -9,6 +9,7 @@ export function LabeledEmbed({
   url: string;
   inputProps?: React.ComponentProps<"input">;
 }) {
+  const isEmbeddableResult = useIsEmbeddable(url);
   return (
     <div
       style={{
@@ -57,7 +58,13 @@ export function LabeledEmbed({
           </span>
         </a>
       )}
-      <Embed url={url} />
+      {isEmbeddableResult.type == "success" && isEmbeddableResult.value ? (
+        <Embed url={url} />
+      ) : (
+        <em style={{ padding: 10, display: "flex", justifyContent: "center" }}>
+          {isEmbeddableResult.type == "loading" ? "loading" : "not embeddable"}
+        </em>
+      )}
     </div>
   );
 }

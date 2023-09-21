@@ -1,6 +1,6 @@
 {
   "name": "@emweb/react",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

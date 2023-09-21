@@ -19,8 +19,8 @@ export async function fetchAndSanitizeOEmbed(
     url,
     { maxheight: maxHeight, maxwidth: maxWidth },
     { signal },
-  );
-  if ("html" in data && typeof data.html == "string") {
+  ).catch(() => null);
+  if (data && "html" in data && typeof data.html == "string") {
     data.html = DOMPurify.sanitize(data.html, {
       ADD_TAGS: ["iframe"],
       ADD_ATTR: ["src", "frameBorder"],
