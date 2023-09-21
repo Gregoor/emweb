@@ -7,8 +7,6 @@ export type OEmbedOptions = {
   signal?: AbortSignal;
 };
 
-export const isOEmbeddable = hasProvider;
-
 export async function fetchAndSanitizeOEmbed(
   url: string,
   options?: OEmbedOptions,
@@ -30,3 +28,6 @@ export async function fetchAndSanitizeOEmbed(
   }
   return data;
 }
+
+export const isOEmbeddable = async (url: string) =>
+  hasProvider(url) && Boolean(await fetchAndSanitizeOEmbed(url));

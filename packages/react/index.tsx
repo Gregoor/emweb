@@ -16,8 +16,22 @@ function isHTTP_URL(s: string) {
   }
 }
 
+const promiseRaceTrueish = (
+  ...promises: Promise<unknown>[]
+): Promise<boolean> =>
+  new Promise((resolve) => {
+    for (const promise of promises) {
+      promise.then((value) => {
+        if (value) {
+          resolve(true);
+        }
+      });
+    }
+    Promise.allSettled(promises).then(() => resolve(false));
+  });
+
 export const isEmbeddable = async (url: string) =>
-  isHTTP_URL(url) && (isOEmbeddable(url) || Boolean(await fetchFrameSrc(url)));
+  isHTTP_URL(url) && promiseRaceTrueish(isOEmbeddable(url), fetchFrameSrc(url));
 
 export const useIsEmbeddable = (url: string) =>
   useAsyncValue(useCallback(() => isEmbeddable(url), [url]));
