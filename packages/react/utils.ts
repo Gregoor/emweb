@@ -13,3 +13,31 @@ export function useAbortableEffectState<Value>(
   }, [fn]);
   return value;
 }
+
+export function useAsyncValue<Value>(fn: () => Promise<Value>) {
+  const [state, setState] = useState<
+    | { type: "loading" }
+    | { type: "success"; value: Value }
+    | { type: "error"; error: Error }
+  >({
+    type: "loading",
+  });
+  useEffect(() => {
+    let isCurrent = true;
+    fn()
+      .then((value) => {
+        if (isCurrent) {
+          setState({ type: "success", value });
+        }
+      })
+      .catch((error) => {
+        if (isCurrent) {
+          setState({ type: "error", error });
+        }
+      });
+    return () => {
+      isCurrent = false;
+    };
+  }, [fn]);
+  return state;
+}

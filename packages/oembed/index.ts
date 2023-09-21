@@ -7,12 +7,14 @@ export type OEmbedOptions = {
   signal?: AbortSignal;
 };
 
+export const isOEmbeddable = hasProvider;
+
 export async function fetchAndSanitizeOEmbed(
   url: string,
   options?: OEmbedOptions,
 ) {
   const { signal, maxHeight, maxWidth } = options ?? {};
-  if (!hasProvider(url)) {
+  if (!isOEmbeddable(url)) {
     return null;
   }
   const data = await extract(
