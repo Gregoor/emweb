@@ -12,7 +12,7 @@ export async function fetchAndSanitizeOEmbed(
   options?: OEmbedOptions,
 ) {
   const { signal, maxHeight, maxWidth } = options ?? {};
-  if (!isOEmbeddable(url)) {
+  if (!hasProvider(url)) {
     return null;
   }
   const data = await extract(

@@ -6,11 +6,11 @@ const isWildcardURLMatch = (patternURL: string, url: string) =>
   new RegExp(escapeStringRegexp(patternURL).replaceAll("\\*", ".*")).test(url);
 
 export async function fetchFrameSrc(url: string, options?: RequestInit) {
-  const manifest: Config = await fetch(
-    new URL("/.well-known/emweb.json", url),
-    options,
-  ).then((r) => r.json());
-  const source = manifest.sources!.find((source) =>
+  const manifestURL = new URL("/.well-known/emweb.json", url);
+  const manifest: Config | null = await fetch(manifestURL, options)
+    .then((r) => r.json())
+    .catch(() => null);
+  const source = manifest?.sources!.find((source) =>
     isWildcardURLMatch(
       new URL(typeof source == "string" ? source : source.from!, url).pathname,
       url,

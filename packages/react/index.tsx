@@ -31,7 +31,8 @@ const promiseRaceTrueish = (
   });
 
 export const isEmbeddable = async (url: string) =>
-  isHTTP_URL(url) && promiseRaceTrueish(isOEmbeddable(url), fetchFrameSrc(url));
+  isHTTP_URL(url) &&
+  (await promiseRaceTrueish(isOEmbeddable(url), fetchFrameSrc(url)));
 
 export const useIsEmbeddable = (url: string) =>
   useAsyncValue(useCallback(() => isEmbeddable(url), [url]));
