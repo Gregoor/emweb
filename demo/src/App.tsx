@@ -9,7 +9,7 @@ export function LabeledEmbed({
   url: string;
   inputProps?: React.ComponentProps<"input">;
 }) {
-  const isEmbeddableResult = useIsEmbeddable(url);
+  const isEmbeddable = useIsEmbeddable(url);
   return (
     <div
       style={{
@@ -58,11 +58,11 @@ export function LabeledEmbed({
           </span>
         </a>
       )}
-      {isEmbeddableResult.type == "success" && isEmbeddableResult.value ? (
+      {isEmbeddable ? (
         <Embed url={url} />
       ) : (
         <em style={{ padding: 10, display: "flex", justifyContent: "center" }}>
-          {isEmbeddableResult.type == "loading" ? "loading" : "not embeddable"}
+          not embeddable (or loading)
         </em>
       )}
     </div>

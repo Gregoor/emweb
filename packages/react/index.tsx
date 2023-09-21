@@ -34,8 +34,10 @@ export const isEmbeddable = async (url: string) =>
   isHTTP_URL(url) &&
   (await promiseRaceTrueish(isOEmbeddable(url), fetchFrameSrc(url)));
 
-export const useIsEmbeddable = (url: string) =>
-  useAsyncValue(useCallback(() => isEmbeddable(url), [url]));
+export const useIsEmbeddable = (url: string) => {
+  const result = useAsyncValue(useCallback(() => isEmbeddable(url), [url]));
+  return result.type == "success" && result.value;
+};
 
 export function Embed({ url }: { url: string }) {
   return (
