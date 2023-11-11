@@ -1,6 +1,6 @@
 {
   "name": "@emweb/host",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,10 +8,12 @@
     "prepublish": "tsc --outDir dist"
   },
   "dependencies": {
-    "@emweb/schemas": "workspace:*",
-    "escape-string-regexp": "^5.0.0"
+    "@emweb/schemas": "workspace:*"
   },
   "files": [
     "dist/"
-  ]
+  ],
+  "devDependencies": {
+    "urlpattern-polyfill": "^9.0.0"
+  }
 }

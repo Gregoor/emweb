@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "to-json-schema": "ts-node-esm --transpileOnly to-json-schema.ts",
+    "to-json-schema": "node --loader ts-node/esm to-json-schema.ts",
     "prepublish": "tsc index.ts --declaration --outDir dist"
   },
   "dependencies": {

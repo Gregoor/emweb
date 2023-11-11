@@ -1,25 +1,31 @@
-import escapeStringRegexp from "escape-string-regexp";
-
 import type { Config, EmwebMessage } from "@emweb/schemas";
-
-const isWildcardURLMatch = (patternURL: string, url: string) =>
-  new RegExp(escapeStringRegexp(patternURL).replaceAll("\\*", ".*")).test(url);
 
 export async function fetchFrameSrc(url: string, options?: RequestInit) {
   const manifestURL = new URL("/.well-known/emweb.json", url);
   const manifest: Config | null = await fetch(manifestURL, options)
     .then((r) => r.json())
     .catch(() => null);
-  const source = manifest?.sources!.find((source) =>
-    isWildcardURLMatch(
-      new URL(typeof source == "string" ? source : source.from!, url).pathname,
+  for (const source of manifest?.sources ?? []) {
+    const fromPattern = new URLPattern(
+      typeof source == "string" ? source : source.from!,
       url,
-    ),
-  );
-  if (!source) {
-    return null;
+    );
+    const match = fromPattern.exec(url);
+    if (!match) continue;
+
+    if (typeof source == "string") {
+      return url;
+    }
+
+    return new URL(
+      Object.entries(match.pathname.groups).reduce(
+        (url, [key, value]) => url.replace(`:${key}`, value ?? ""),
+        source.to!,
+      ),
+      url,
+    ).toString();
   }
-  return typeof source == "string" ? url : source.to!;
+  return null;
 }
 
 export function onWindowMessage(

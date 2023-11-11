@@ -15,6 +15,8 @@ export function LabeledEmbed({
       style={{
         border: "1px solid rgb(107, 114, 128)",
         borderRadius: 4,
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       {inputProps ? (
