@@ -17,6 +17,7 @@ export function LabeledEmbed({
         borderRadius: 4,
         display: "flex",
         flexDirection: "column",
+        width: "fit-content",
       }}
     >
       {inputProps ? (
