@@ -1,5 +1,7 @@
 # emweb
 
+[Demo](https://emweb.vercel.app/) | [Blog Post](https://dflate.io/emweb)
+
 ## Host
 
 For embedding other pages you can either use the the vanilla library or the
@@ -15,18 +17,6 @@ In either case you should polyfill URLPattern (e.g. by using
 
 ```sh
 npm install @emweb/host
-```
-
-or
-
-```sh
-pnpm install @emweb/host
-```
-
-or
-
-```sh
-yarn add @emweb/host
 ```
 
 #### Usage
@@ -59,18 +49,6 @@ emweb manifest for the given URL.
 npm install @emweb/react
 ```
 
-or
-
-```sh
-pnpm install @emweb/react
-```
-
-or
-
-```sh
-yarn add @emweb/react
-```
-
 #### Usage
 
 ```tsx
@@ -82,8 +60,9 @@ import { Embed } from "@emweb/react";
 
 ## Guest
 
-The only requirement is a [manifest](/packages/schemas/emweb.schema.json) hosted
-at `/.well-known/emweb.json`.
+The only requirement is a [manifest](/packages/schemas/emweb.schema.json)
+hosted at `/.well-known/emweb.json` that points towards URLs that have
+permissive CORS headers set.
 
 If you want to give the host page the ability to resize, depending on your
 page's content size, you can use the `@emweb/bus` library.
@@ -94,18 +73,6 @@ page's content size, you can use the `@emweb/bus` library.
 npm install @emweb/bus
 ```
 
-or
-
-```sh
-pnpm install @emweb/bus
-```
-
-or
-
-```sh
-yarn add @emweb/bus
-```
-
 ### Usage
 
 ```ts
@@ -114,6 +81,6 @@ import { postResizeChanges } from "@emweb/bus";
 const cleanup = postResizeChanges();
 // call cleanup() to stop sending resize messages
 
-// this makes it straightforward to register within a React component
+// this makes it straightforward to register e.g. within a React component
 useEffect(postResizeChanges, []);
 ```
