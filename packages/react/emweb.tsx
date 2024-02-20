@@ -40,6 +40,7 @@ export function Emweb({
         width: width || "100%",
         height: height || "100%",
       }}
+      allow="vertical-scroll 'none'"
       {...props}
     />
   );
